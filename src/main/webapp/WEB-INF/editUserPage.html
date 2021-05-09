@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Here you can edit or add user</h1>
+    <h2>
+        <form action="/editUser" method="post" th:object="${user}">
+            <table>
+                <input th:value="${user.getId()}" name="id" type="hidden">
+                Name <input th:value="${user.getName()}" name="name" type="text">
+                Workplace <input th:value="${user.getWorkPlace()}" name="workPlace" type="text">
+                Salary <input th:value="${user.getSalary()}" name="salary" type="number">
+                Age <input th:value="${user.getAge()}" name="age" type="number">
+
+            </table>
+            <input type="submit" value="Add user">
+        </form>
+
+    </h2>
+    <h1>You can <a href="/">go back</a> to list of users </h1>
+</body>
+</html>

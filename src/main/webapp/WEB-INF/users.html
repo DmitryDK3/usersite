@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+
+</head>
+<body>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Workplace</th>
+        <th>Salary</th>
+        <th>Age</th>
+    </tr>
+    <th:block th:each="user1 : ${users}">
+        <tr>
+            <td th:text="${user1.getName()}"></td>
+            <td th:text="${user1.getWorkPlace()}"></td>
+            <td th:text="${user1.getSalary()}"></td>
+            <td th:text="${user1.getAge()}"></td>
+            <td>
+            <a th:href="@{/editUserPage/__${user1.getId()}__}">edit</a>
+            <a th:href="@{/removeUser/__${user1.getId()}__}">delete</a>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<form action="/addUser" method="post" th:object="${user}">
+    <table>
+        <input  name="name" type="text"> Name
+        <br>
+        <input  name="workPlace" type="text"> Workplace
+        <br>
+        <input  name="salary" type="number"> Salary
+        <br>
+        <input  name="age" type="number"> Age
+        <br>
+        <input type="submit" value="Add user">
+    </table>
+</form>
+</body>
+</html>
