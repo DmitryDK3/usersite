@@ -10,5 +10,6 @@ public interface UserDao {
     void removeUser(int id);
     void addUser(User user);
     void edit(User user);
+   User getUserByName(String s);
 }
 

@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -28,7 +29,7 @@ import java.util.Properties;
 })
 @Configuration
 @EnableWebMvc
-@ComponentScan({"Controller","Service","Dao"})
+@ComponentScan({"Controller","Service","Dao",})
 public class WebConfig implements WebMvcConfigurer {
     private Environment environment;
     private final ApplicationContext applicationContext;
@@ -64,8 +65,10 @@ public class WebConfig implements WebMvcConfigurer {
         registry.viewResolver(resolver);
     }
 
-
-
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+    }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {

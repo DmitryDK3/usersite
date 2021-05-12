@@ -10,7 +10,7 @@
 <body>
     <h1>Here you can edit or add user</h1>
     <h2>
-        <form action="/editUser" method="post" th:object="${user}">
+        <form action="/admin/editUser" method="post" th:object="${user}">
             <table>
                 <input th:value="${user.getId()}" name="id" type="hidden">
                 Name <input th:value="${user.getName()}" name="name" type="text">
@@ -24,5 +24,6 @@
 
     </h2>
     <h1>You can <a href="/">go back</a> to list of users </h1>
+<div th:insert="~{logout :: Logout}"></div>
 </body>
 </html>

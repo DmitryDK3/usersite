@@ -22,13 +22,13 @@
             <td th:text="${user1.getSalary()}"></td>
             <td th:text="${user1.getAge()}"></td>
             <td>
-            <a th:href="@{/editUserPage/__${user1.getId()}__}">edit</a>
-            <a th:href="@{/removeUser/__${user1.getId()}__}">delete</a>
+            <a th:href="@{/admin/editUserPage/__${user1.getId()}__}">edit</a>
+            <a th:href="@{/admin/removeUser/__${user1.getId()}__}">delete</a>
             </td>
         </tr>
     </th:block>
 </table>
-<form action="/addUser" method="post" th:object="${user}">
+<form action="/admin/addUser" method="post" th:object="${user}">
     <table>
         <input  name="name" type="text"> Name
         <br>
@@ -38,8 +38,23 @@
         <br>
         <input  name="age" type="number"> Age
         <br>
+        <input  name="password" type="text"> Password
+        <br>
+        <div>
+            <input type="checkbox" id="admin" name="roles[]" value="ROLE_ADMIN" class="Role"
+                   checked>
+            <label for="admin">Admin</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="user8" name="roles[]" value="ROLE_USER" class="Role">
+            <label for="user8">User</label>
+        </div>
+
+        <br>
         <input type="submit" value="Add user">
     </table>
 </form>
+<div th:insert="~{logout :: Logout}"></div>
 </body>
 </html>

@@ -13,7 +13,7 @@ import java.util.List;
 public class UserDaoImpl implements UserDao{
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public List<User> getUsers() {
@@ -24,6 +24,7 @@ public class UserDaoImpl implements UserDao{
     public User getUser(int id) {
         return  this.entityManager.find(User.class,id);
     }
+
 
     @Override
     public void removeUser(int id) {
@@ -39,5 +40,10 @@ public class UserDaoImpl implements UserDao{
     @Override
     public void edit(User user) {
         entityManager.merge(user);
+    }
+
+    @Override
+    public User getUserByName(String s) {
+        return (User) entityManager.createQuery("select u from User u where u.name =: name").setParameter("name",s).getSingleResult();
     }
 }

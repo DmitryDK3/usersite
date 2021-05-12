@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
 
     @Override
     public List<User> getUsers() {
@@ -36,4 +36,10 @@ public class UserServiceImpl implements UserService{
     public void edit(User user) {
         userDao.edit(user);
     }
+
+    public User getUserByName(String s) {
+        return userDao.getUserByName(s);
+    }
+
+
 }
