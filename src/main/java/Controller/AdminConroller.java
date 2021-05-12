@@ -41,7 +41,6 @@ public class AdminConroller {
     @PostMapping("/addUser")
     public String addUserPage(@ModelAttribute User user) {
         Set<Role> set = new HashSet<>(user.getRoles());
-        set.stream().forEach(System.out::println);
         userService.addUser(user);
         return "redirect:/admin";
     }
