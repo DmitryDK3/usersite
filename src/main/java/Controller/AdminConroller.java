@@ -20,7 +20,7 @@ public class AdminConroller {
     @Autowired
     private UserService userService;
 
-    @GetMapping (value = "")
+    @GetMapping
     public String getUsers(Model model) {
         List<User> users = userService.getUsers();
         model.addAttribute("users", users);

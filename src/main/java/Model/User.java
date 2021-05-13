@@ -18,7 +18,7 @@ public class User implements UserDetails {
     private String workPlace;
     private int salary;
     private int age;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "myuser_role", joinColumns = @JoinColumn(name = "User_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles ;
