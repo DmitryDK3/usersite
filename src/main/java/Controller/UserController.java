@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("")
+    @GetMapping
     public String getUser(Authentication authentication, Model model) {
         model.addAttribute("message",userService.getUserByName(authentication.
                             getName()) + authentication.getAuthorities().toString());
